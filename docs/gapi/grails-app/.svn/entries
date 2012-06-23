@@ -1,43 +1,0 @@
-10
-
-dir
-117
-http://svn.dondenoncourt.com/spotsy/docs/gapi/grails-app
-http://svn.dondenoncourt.com
-
-
-
-2010-03-03T19:59:59.173739Z
-10
-svn_dondenoncourt
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-e1006e15-b6b1-4c00-a31c-8ca371b79d6b
-
-conf
-dir
-
-controllers
-dir
-
-domain
-dir
-
-jobs
-dir
-
-services
-dir
-
