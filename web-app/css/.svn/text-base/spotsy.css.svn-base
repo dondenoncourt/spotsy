@@ -1,0 +1,90 @@
+a				{ font-family: Verdana, Arial, sans-serif;}
+a:hover		{ font-family: Verdana, Arial, sans-serif; text-decoration: none; color: #FF0000; }
+p				{ font-family: Verdana, Arial, sans-serif; font-size: 10pt; }
+h1				{ font-family: Verdana, Arial, sans-serif;}
+h2				{ font-family: Verdana, Arial, sans-serif;}
+h3				{ font-family: Verdana, Arial, sans-serif;}
+h4				{ font-family: Verdana, Arial, sans-serif;}
+h5				{ font-family: Verdana, Arial, sans-serif;}
+h6				{ font-family: Verdana, Arial, sans-serif;}
+body         { font-family: Verdana, Arial, sans-serif; font-size: 10pt; background-image: url("/images/backgrounds/gray.jpg"); }
+table {font-family: Verdana, Arial, sans-serif; font-size: 10pt; background-color: #FFFFCC;}
+.tablebordercell {background-color: #333399;}
+.tinybutton	{ font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold;}
+.button		{ font-family: Verdana, Arial, sans-serif; font-size: 12px; font-weight: bold;}
+.tinytextbox		{ font-family: Verdana, Arial, sans-serif; font-size: 10px;}
+.textbox		{ font-family: Verdana, Arial, sans-serif; font-size: 12px;}
+.tinylabel		{ font-family: Verdana, Arial, sans-serif; font-size: 10px; font-weight: bold;}
+.label			{ font-family: Verdana, Arial, sans-serif; font-size: 12px; font-weight: bold;}
+.topnavigationlinks { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color: #FFFFFF; text-decoration: none;}
+.sidenavigationlinks { font-family: Verdana, Arial, sans-serif; font-size: 10pt; color: #FFFFFF; text-decoration: none;}
+.topsearchlabel {font-family: Verdana, Arial, sans-serif; font-size: 10pt; color: #FFFFFF; font-weight: bold;}
+.radio			{ font-family: Verdana, Arial, sans-serif; font-size: 12px;}
+.checkbox		{ font-family: Verdana, Arial, sans-serif; font-size: 12px;}
+.tinydropdown	{ font-family: Verdana, Arial, sans-serif; font-size: 10px;}
+.dropdown		{ font-family: Verdana, Arial, sans-serif; font-size: 12px;}
+
+.footertext	{ font-family: Verdana, Arial, sans-serif; font-size: 10px;}
+
+.menuitem {background-color: #333399; color: #FFFFFF; text-decoration: none; font-size:11px;}
+.scrollingwhatsnew {background-color: #FFFFFF; font-family: Verdana, Arial, sans-serif; font-size: 12pt; background-image: none;}
+
+.menubackground {background-color: #333399;}
+.itemBorder { border: 1px solid black;}
+.itemText { text-decoration: none; color: #FFFFFF; font-size: 11px;}
+.menubackground:hover {background-color: #336699;}
+.itemBorder:hover { background-color: #336699; }
+.itemText:hover { background-color: #336699; color: #FFFFFF;}
+
+.calendarclosedday {color: #CC0000;}
+.calendardayheader {background-color: #9999CC;}
+
+.faqanswer {background-color: #FFFF99;}
+.faqquestion {background-color: #FFCC66;}
+
+.portletheader {background-color: #CCCC99;}
+
+.StatusOnTime {background-color:#66CC66;}
+.StatusDelayed {background-color:#FFFF00;}
+.StatusCritical {background-color:#FF0000;}
+
+/* denoncourt additions: */
+div.errors {
+    background: #fff3f3;
+    border: 1px solid red;
+    color: #cc0000;
+    margin: 10px 0 5px 0;
+    padding: 5px 0 5px 0;
+}
+div.errors ul {
+    list-style: none;
+    padding: 0;
+}
+div.errors li {
+	background: url(../images/skin/exclamation.png) 8px 0% no-repeat;
+    line-height: 16px;
+    padding-left: 30px;
+}
+dl {
+    margin-bottom:10px;
+}
+
+dl dt {
+    float:left;
+    clear:left;
+    font-weight:bold;
+    margin-right:10px;
+    padding:1px;
+    width:29%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+dl dd {
+    margin:1px;
+    padding:1px;
+    text-align:left;
+	width:69%;
+    white-space: nowrap;
+}

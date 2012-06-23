@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/!svn/ver/10/spotsy/test/integration
+END
+EchecksServiceTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/10/spotsy/test/integration/EchecksServiceTests.groovy
+END
+LookupControllerTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/10/spotsy/test/integration/LookupControllerTests.groovy
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/10/spotsy/test/integration/package.html
+END
+PaymentControllerTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/!svn/ver/10/spotsy/test/integration/PaymentControllerTests.groovy
+END
+BalanceImportServiceTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/!svn/ver/10/spotsy/test/integration/BalanceImportServiceTests.groovy
+END

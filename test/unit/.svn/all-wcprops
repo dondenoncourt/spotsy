@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/!svn/ver/23/spotsy/test/unit
+END
+PaymentTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/10/spotsy/test/unit/PaymentTests.groovy
+END
+PaymentControllerUnitTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/23/spotsy/test/unit/PaymentControllerUnitTests.groovy
+END
+CheckTransactionTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/!svn/ver/10/spotsy/test/unit/CheckTransactionTests.groovy
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/!svn/ver/10/spotsy/test/unit/package.html
+END
+LookupControllerUnitTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/10/spotsy/test/unit/LookupControllerUnitTests.groovy
+END
+UserTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/!svn/ver/10/spotsy/test/unit/UserTests.groovy
+END
+BalanceImportControlTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/!svn/ver/10/spotsy/test/unit/BalanceImportControlTests.groovy
+END
+BalanceTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/10/spotsy/test/unit/BalanceTests.groovy
+END
+BillTypeTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/10/spotsy/test/unit/BillTypeTests.groovy
+END
+UserAccountTests.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/10/spotsy/test/unit/UserAccountTests.groovy
+END

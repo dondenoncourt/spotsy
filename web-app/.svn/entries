@@ -1,0 +1,40 @@
+10
+
+dir
+117
+http://svn.dondenoncourt.com/spotsy/web-app
+http://svn.dondenoncourt.com
+
+
+
+2010-06-08T03:26:29.325231Z
+56
+svn_dondenoncourt
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e1006e15-b6b1-4c00-a31c-8ca371b79d6b
+
+META-INF
+dir
+
+css
+dir
+
+images
+dir
+
+js
+dir
+

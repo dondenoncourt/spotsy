@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/!svn/ver/10/spotsy/lib
+END
+sqljdbc.jar
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/10/spotsy/lib/sqljdbc.jar
+END
+jt400.jar
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/!svn/ver/10/spotsy/lib/jt400.jar
+END
+mysql.jar
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/!svn/ver/10/spotsy/lib/mysql.jar
+END

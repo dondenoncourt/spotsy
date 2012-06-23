@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/!svn/ver/99/spotsy/grails-app/views/payment
+END
+edit.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/99/spotsy/grails-app/views/payment/edit.gsp
+END
+payments.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/99/spotsy/grails-app/views/payment/payments.gsp
+END
+finalsubmit.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/!svn/ver/10/spotsy/grails-app/views/payment/finalsubmit.gsp
+END
+changepersonal.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/!svn/ver/10/spotsy/grails-app/views/payment/changepersonal.gsp
+END
+view.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/99/spotsy/grails-app/views/payment/view.gsp
+END
+checkout.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/!svn/ver/99/spotsy/grails-app/views/payment/checkout.gsp
+END
+preview.gsp
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/10/spotsy/grails-app/views/payment/preview.gsp
+END

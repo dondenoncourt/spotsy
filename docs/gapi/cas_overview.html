@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>eChecks App Overview</title>
+<LINK REL ="stylesheet" TYPE="text/css" HREF="stylesheet.css" TITLE="Style">
+<LINK REL ="stylesheet" TYPE="text/css" HREF="cas.css" TITLE="Style">
+
+</head>
+<body>
+<img alt="" src="http://www.cassevern.com/images/logo.gif">
+<h1>Overview of the eChecks Application Implementation</h1>
+
+<div id="grails">
+<h2>An Overview of Grails</h2>
+	<p>
+	The eChecks application was written using the <a href="#" onclick="window.open('http://www.grails.org/');">Grails</a> framework.
+	</p>
+	<p>
+	Grails is a hugely popular framework that leverages the best-of-breed Java frameworks by integrating them into one framework. 
+	</p>
+	These Java frameworks include (among others):
+	<ul>
+		<li><a href="#" onclick="window.open('>http://www.springsource.org/');">Spring</a></li>
+		<li><a href="#" onclick="window.open('https://www.hibernate.org/');">Hibernate</a></li>
+		<li><a href="#" onclick="window.open('http://www.opensymphony.com/sitemesh/');">Site Mesh</a></li>
+		<li><a href="#" onclick="window.open('http://www.prototypejs.org');">Prototype</a></li>
+	</ul>
+	
+	<p>Grails has a philosophy of 'Convention over configuration' which greatly aids in the development (and perhaps more importantly) 
+	the maintenance of applications. It has been our experience that we can develop apps with Grails far more easy than with any other 
+	development platform (such as .Net and J2EE.) Regularly we have to revisit Java applications that CAS has developed over the years. 
+	But it always takes CAS developers a while to figure out the design strategies. For instance: what MVC pattern was used?
+	</p>
+	<p>
+	With Grails applications -- whether written by CAS Severn or otherwise -- the MVC is always the same. 
+	The directory structure is always the same. Job scheduling, configuration, and so forth: they are always the same. 
+	</p>
+	<p>
+	The Grails philosophy of "Convention over Configuration" provides a huge ROI when someone else can take over a Grails project and 
+	know where everything is. 
+	</p>
+	<p>Note: There are over a dozen books available on Grails. Visit Amazon and Google Grails for a list. There is also a free PDF available:
+	<a href="#" onclick="window.open('http://www.infoq.com/minibooks/grails-getting-started');">Grails: Getting Started</a></p>
+</div>
+<div id="appImpl">
+	<h2>An Overview of the eChecks Application Implementation</h2>
+
+	<h3>The Model</h3>	
+	<p>The eChecks application uses a domain-centric approach to development. The domain classes represent the model in the model/view/controller (MVC)
+	architecture.</p>
+	The application uses the following tables:
+	<table>
+		<tr><th>Table</th><th>Domain Class</th><th>New Table</th></tr>
+		<tr><td>balanceimport</td><td><a href="grails-app/domain/Balance.html">Balance</a></td><td></td></tr>
+		<tr><td>balanceimportcontrol</td><td><a href="grails-app/domain/BalanceImportControl.html">BalanceImportControl</a></td><td></td></tr>
+		<tr><td>bill_type</td><td><a href="grails-app/domain/BillType.html">BillType</a></td><td>Yes</td></tr>
+		<tr><td>check_transaction</td><td><a href="grails-app/domain/CheckTransaction.html">CheckTransaction</a></td><td>Yes</td></tr>
+		<tr><td>payment</td><td><a href="grails-app/domain/Payment.html">Payment</a></td><td>Yes</td></tr>
+		<tr><td>payment_line</td><td><a href="grails-app/domain/PaymentLine.html">PaymentLine</a></td><td>Yes</td></tr>
+		<tr><td>user</td><td><a href="grails-app/domain/User.html">User</a></td><td></td></tr>
+		<tr><td>userAccounts</td><td><a href="grails-app/domain/UserAccount.html">UserAccounts</a></td><td></td></tr>
+	</table>
+	To view an image of the domain classes click <a href="#" onclick="window.open('domain.png');">here</a>
+	<p>Each domain class has a set of constraints that are used to peform validation on the object. The constraints are checked automatically
+	by Grails before insert or updates are written.  If a constraint check fails, the insert or update is aborted. </p>
+	<p>The eChecks implementation made heavy used of the Grails constraints feature specifically in the Payment, PaymentLine, and CheckTransaction domains/tables</p>
+
+	<h3>The View</h3>	
+	<p>The HTML pages that comprise the eChecks application uses Groovy Server Pages (GSP.) GSP greatly simplifies page design. GSPs are 
+	as easy to use a PHP pages but with the power of Java frameworks. GSP pages are very easy to develop and maintain.</p>
+	<table>
+		<tr><th>Dir</th><th>Page Name</th><th>Desc</th></tr>
+		<tr><td>lookup</td><td>personalPropertyLookup.gsp</td><td>PP Search</td></tr>
+		<tr><td>lookup</td><td>personalPropertyBillInfo.gsp</td><td>PP Billing Info</td></tr>
+		<tr><td>lookup</td><td>realEstateBillInfo.gsp</td><td>RE Billing Info</td></tr>
+		<tr><td>lookup</td><td>waterSewerBillInfo.gsp</td><td>WS Billing Info</td></tr>
+		<tr><td>lookup</td><td>waterSewerLookup.gsp</td><td>WS Search</td></tr>
+		<tr><td>lookup</td><td>realEstateLookup.gsp</td><td>RE Search</td></tr>
+		<tr><td>payment</td><td>payments.gsp</td><td>List all payments types (as in Bill_Type table)</td></tr>
+		<tr><td>payment</td><td>changepersonal.gsp</td><td>Change personal information (name, address, etc.)</td></tr>
+		<tr><td>payment</td><td>finalsubmit.gsp</td><td>Final submit confirmation</td></tr>
+		<tr><td>payment</td><td>edit.gsp</td><td>Payment edit</td></tr>
+		<tr><td>payment</td><td>checkout.gsp</td><td>Checkout prompt</td></tr>
+		<tr><td>payment</td><td>preview.gsp</td><td>Preview the Payment before confirmation</td></tr>
+		<tr><td>payment</td><td>view.gsp</td><td>View Payment</td></tr>
+		<tr><td>error</td><td>error.gsp</td><td>Error displayed to user</td></tr>
+		<tr><td>error</td><td>internalError.gsp</td>Error format sent in email to web master<td></td></tr>
+	</table>
+
+	<h3>The Controller</h3>	
+	<p>All logic associated with user actions on web pages are handled in the following controllers: </p>
+	<ul>   
+		<li><A HREF="grails-app/controllers/ErrorController.html" title="class in grails-app/controllers">ErrorController</A> Handles application errors by emailing the stack to whoever is identified in the configuration  value for app.error.email.to.addresses  </li>
+		<li><A HREF="grails-app/controllers/LookupController.html" title="class in grails-app/controllers">LookupController</A> Handlers page requests related to the account lookup portion of the eChecks application.  </li>
+		<li><A HREF="grails-app/controllers/PaymentController.html" title="class in grails-app/controllers">PaymentController</A> Handlers page requests related to the payment portion of the eChecks application.  </li>
+	</ul>
+	<p>The controllers have methods/actions that handle user page submissions. Unlike the Cold Fusion application, 
+	and in conformance with the model/view/controller design pattern the pages of the new eChecks application contain no business logic.</p>
+	<p>The controllers make use of utility classes that wrap page data. These classes use the Grails naming convention of a prefix of 'Command'.
+	The command objects, similar to the domain classes, have embedded constraint logic. The constraint logic is invoked at the beginning of each 
+	method/action of the controller classes. If any errors are found, the page is redisplayed with the error. For example,
+	the following code is from the LookupController: </p>
+	<pre>
+        def lookupWaterSewer = {WaterSewerLookupCommand cmd ->
+          if (cmd.hasErrors()) {
+            render (view:'waterSewerLookup', model:[cmd:cmd])
+            return
+          }
+          ... code omitted	
+	</pre>
+	and the following is the WaterSewerLookupCommand
+	<pre>
+class WaterSewerLookupCommand {
+    String wsCustomerNum
+    String wsLocationNum
+    String wsCustomerNumOnly
+    static constraints = {
+       wsCustomerNum(validator: {val, obj ->
+       		if (obj.wsCustomerNumOnly.size() != 0 && obj.wsCustomerNum.size() != 0) {
+                return "spotsy.lookup.only.one"
+       		}
+            if (obj.wsCustomerNum.size() > 0) {
+                obj.wsCustomerNum = obj.wsCustomerNum.replaceAll('[-/ $A-Za-z]', {''})
+                if (!( obj.wsCustomerNum ==~ /\d{4,12}/ ) ) {
+                    return "WaterSewerLookupCommand.wsCustomerNum.all.digits"
+                }
+            }
+       })
+       wsLocationNum(validator: {val, obj ->
+            if (obj.wsLocationNum.size() > 0 || obj.wsCustomerNum) {
+                obj.wsLocationNum = obj.wsLocationNum.replaceAll('[-/ $A-Za-z]', {''})
+                if (!( obj.wsLocationNum ==~ /\d{4,12}/ ) ) {
+                    return "WaterSewerLookupCommand.wsLocationNum.all.digits"
+                }
+            }
+       })
+       wsCustomerNumOnly(validator: {val, obj ->
+            if (obj.wsCustomerNumOnly.size() > 0) {
+                obj.wsCustomerNumOnly = obj.wsCustomerNumOnly.replaceAll('[-/ $A-Za-z]', {''})
+                if (!( obj.wsCustomerNumOnly ==~ /\d{4,12}/ ) ) {
+                    return "WaterSewerLookupCommand.wsCustomerNumOnly.all.digits"
+                }
+            }
+       })
+    }
+}
+	</pre>
+	<p>The constraints check the three input values. </p>
+	<p>The error messages (such as WaterSewerLookupCommand.wsCustomerNum.all.digits) are soft-coded to a file called message.properties. It is located 
+	in the grails-app/i18n directory. Again, the messaging strategy is a Grails standard and would be covered in any Grails documentation.</p>
+
+	<h3>Servies</h3>
+	<p>Logic that is not directly associated with Controllers and the View or otherwise large sections of logic that needs specialized testing, for Grails,
+	are called Services. The <a href="grails-app/services/EchecksService.html">EchecksService</a> currently has only one method: writeEchecksToCSV.</p>
+
+	<h3>Job Scheduling</h3>
+	<p>As job scheduling is a standard application problem, Grails provides a job scheduling feature. Any class that is in the grails-app/jobs directory
+	will be inspected at application startup time (whenever Tomcat is restarted.) If Grails sees that the class hase an attribute called cronExpression 
+	and a method called execute, Grails will run the execute method at the time specified in the cronExpression attribute. The cronExpression follows the 
+	Unix standard cron utility time settings. The echecks application has one scheduled job: <a href="grails-app/jobs/CheckTranUploadJob.html">CheckTranUploadJob</a>
+	Currently the cron time is to "0 59 23 * * ?" or 11:59PM MON-F. Note: CheckTranUploadJob invokes the EchecksService's writeEchecksToCSV method.
+	</p>
+
+	<h3>Testing</h3>
+	<p>Grails provides a streamlined facilities for integration and unit testing. Grails has 3 database environments: 1) development 2) test and 3) production
+	CAS typically sets development (in the <a href="grails-app/conf/DataSource.html">DataSource</a> class) to a local database (for eChecks it was a MySql database) and, for the test database it uses an in-memory database. 
+	The production database originally pointed to the Spotsylvania test Microsoft SQL but was later changed to point to the production MSQL.
+	 </p>
+	 <p>CAS wrote several hundred lines of unit and integration test code. This <a href="test/integration/package-summary.html">code</a> is found in classes in the test/integration and test/unit directories.</p>
+
+	<h3>Configuration</h3>
+	<p>Configuration, again, is standardized in Grails. The <a href="grails-app/conf/Config.html">Config</a> class holds general configuration 
+	like email addresses and log file setup.
+	Database connections are specified in <a href="grails-app/conf/DataSource.html">DataSource</a> class.
+	</p>
+	 
+	<h3>Detailed Documentation</h3>
+	To view detailed documentation for all of the eChecks application classes click <a href="index.html">here</a>.
+		
+</div>
+</body>
+</html>

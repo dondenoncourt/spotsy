@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/!svn/ver/51/spotsy/grails-app/domain
+END
+BalanceImportControl.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/!svn/ver/10/spotsy/grails-app/domain/BalanceImportControl.groovy
+END
+Balance.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/10/spotsy/grails-app/domain/Balance.groovy
+END
+User.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/!svn/ver/10/spotsy/grails-app/domain/User.groovy
+END
+PaymentLine.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/51/spotsy/grails-app/domain/PaymentLine.groovy
+END
+SystemImportControl.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/!svn/ver/10/spotsy/grails-app/domain/SystemImportControl.groovy
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/!svn/ver/10/spotsy/grails-app/domain/package.html
+END
+Payment.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/10/spotsy/grails-app/domain/Payment.groovy
+END
+CheckTransaction.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/!svn/ver/10/spotsy/grails-app/domain/CheckTransaction.groovy
+END
+UserAccount.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/!svn/ver/10/spotsy/grails-app/domain/UserAccount.groovy
+END
+BillType.groovy
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/!svn/ver/10/spotsy/grails-app/domain/BillType.groovy
+END
