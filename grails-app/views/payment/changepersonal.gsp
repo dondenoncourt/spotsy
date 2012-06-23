@@ -54,7 +54,7 @@
         <tr>
           <td style="width:40%;text-align:right;" valign="top">
             <label class="label" for="country"><b style="color:#FF0000">*</b><b>Country:</b></label></td><td style="width:60%;text-align:left;">
-         <!--   <input type="text" name="country" id="country" class="text" size="30" maxlength="50" value="${cmd.country}" />-->
+         <%--   <input type="text" name="country" id="country" class="text" size="30" maxlength="50" value="${cmd.country}" />--%>
             <g:countrySelect name="country" value="${cmd.country}" noSelection="['':'-Choose your country-']"/>
           </td>
         </tr>

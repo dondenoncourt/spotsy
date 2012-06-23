@@ -109,7 +109,10 @@
       <label class="label" for="routingNum"><b style="color:#FF0000">*</b><b>Routing Number:</b></label>
       <br />The routing number is exactly nine digits and can be found at the bottom of your check starting in the lower left corner.
     </td>
-    <td style="width:60%;text-align:left;" valign="top"><input type="text" name="routingNum" id="routingNum" class="text" size="10" maxlength="9" value="${cmd.routingNum}" /></td>
+    <td style="width:60%;text-align:left;" valign="top">
+    	<input type="text" name="routingNum" id="routingNum" class="text" size="10" maxlength="9" value="${cmd.routingNum}" />
+    	Do not use the routing number that is printed on the deposit slip.
+    </td>
   </tr>
   <tr style="background-color:#99CC99">
     <td style="width:40%;text-align:right;" valign="top">
@@ -150,8 +153,6 @@
       This page is protected by a 128 bit SSL certificate provided by Verisign. You may use the logo below to verify that our website is secure.
       <p align="center">
         <script src="https://seal.verisign.com/getseal?host_name=www.spotsylvania.va.us&amp;size=M&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en">
-        <!--
-        //-->
         </script>
       </p>
       <input type="submit" name="submit" id="submit" class="button" value="Continue" /><input type="reset" name="submit" id="submit" class="button" value="Clear Form" />

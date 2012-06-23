@@ -102,7 +102,7 @@ All balances include interest, if applicable through <g:formatDate format="MM/dd
         </td>
       </tr>
 </g:each>
-      <!-- PP Summary -->
+      <%-- PP Summary --%>
       <tr>
         <td style="width:100%;text-align:center; font-weight:bold;" valign="top" colspan="2">
             Total Taxes Paid for the above accounts: <g:formatNumber number="${ppPaidTotal}" format="\$###,##0.00" /> (between 01/01/${lastYear} and 12/31/${lastYear})<br /><br />

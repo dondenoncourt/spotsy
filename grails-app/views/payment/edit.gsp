@@ -137,7 +137,7 @@ function balSelectChange() {
                 />
               </td>
             </tr>
-            <g:if test="${billType.id == 1 || billType.id == 4}"><!-- real estate or water/sewer -->
+            <g:if test="${billType.id == 1 || billType.id == 4}"><%-- real estate or water/sewer --%>
   	           <tr>
                 <td style="width:50%;text-align:right;">
                   <label class="label" for="billNum"><b style="color:RED">*</b>${((billType.id == 1)?'Bill':'Location')} Number</label><br />
@@ -145,7 +145,6 @@ function balSelectChange() {
                 </td>
                 <td style="width:50%;text-align:left;">
                   <input type="text" name="billNum" id="billNum" class="text" value="${cmd?.billNum}" 
-                          <%--<g:if test="${cmd?.billNum && !cmd.errors?.getFieldError('billNum')}">readonly="readonly"</g:if>--%>
                   />
                 </td>
               </tr>

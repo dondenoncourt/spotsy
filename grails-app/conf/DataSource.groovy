@@ -14,24 +14,11 @@ hibernate {
 environments {
 	development {
 		dataSource {
-		//	dialect=org.hibernate.dialect.SQLServerDialect
-		//	driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-		//	username = "donat"
-		//	password = "vo2max"
-		//	url = 'jdbc:sqlserver://SCWEB1\\SQL2000;databaseName=webdatabase' // test
-
-            url = "jdbc:mysql://localhost/spotsy"
-            driverClassName = "com.mysql.jdbc.Driver"
-            dialect = org.hibernate.dialect.MySQLDialect
-            username = "root"
-            password = "*pure!choice"
-            
-      //      dbCreate = "update"	
-			
-			// url = 'jdbc:sqlserver://172.16.40.45;databaseName=webdatabase' // production  
-			//username = "ddenoncourt"
-			//password = "1234512"
-			
+			dialect=org.hibernate.dialect.SQLServerDialect
+			driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			username = "ddenoncourt"
+			password = "1234512"
+			url = 'jdbc:sqlserver://172.16.40.45;databaseName=webdatabase'
 			logSql = false
 		}
 	}

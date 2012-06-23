@@ -69,7 +69,6 @@
       <tr>
         <td style="width:100%;" colspan="2" valign="top">
           <h4>Payments :</h4><br />
-          <!---------------------------------------------------------------------------------------------------->
 	        <table style="width:100%;" border="0">
 	        <% def total=0 %>
 	        <g:each var="line" in="${payment?.lines}">

@@ -11,7 +11,7 @@
         <g:javascript library="application" />
     </head>
     <body>
-    <!-- 
+    <%-- 
         <table align="center" border="0" cellpadding="0" cellspacing="0" width="96%">
             <tbody>
               <tr>
@@ -140,7 +140,9 @@
 </tr>
 </tbody>
 </table>
- -->
+ --%>
+<img src="${createLinkTo(dir:'images',file:'SpotsylvaniaVAHeader.jpg')}" alt="Grails" />
+ 
         <g:layoutBody />
 </body>
 </html>

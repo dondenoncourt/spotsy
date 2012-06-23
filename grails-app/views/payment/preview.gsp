@@ -163,7 +163,10 @@
   <tr>
     <td style="width:100%;text-align:center;" colspan="2" valign="top">
       <b><p style="color:#FF0000">
-        By submitting my payment as an electronic check, I authorize the Spotsylvania County Treasurer's Office, to withdraw the said amount from the financial institution account that I have provided. Futhermore, I affirm and attest to the fact that the person(s) authorizing this withdrawal is/are authorized to do so. I understand that a $25.00 services fee will be charged if the full amount of this payment is not available for withdrawal.
+        By submitting my payment as an electronic check, I authorize the Spotsylvania County Treasurer's Office, 
+        to withdraw the said amount from the financial institution account that I have provided. Furthermore, 
+        I affirm and attest to the fact that the person(s) authorizing this withdrawal is/are authorized to do so. 
+        I understand that a $50.00 service fee will be charged if the full amount of this payment is not available for withdrawal.
       </p></b>
       <g:form action="submitpayment" method="post" Name="finalsubmit" id="finalsubmit"  useToken="true" >
           <input type="hidden" Name="lastName" id="lastName" value="${cmd.lastName}" />

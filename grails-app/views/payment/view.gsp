@@ -13,7 +13,7 @@
          <div class="errors">${flash.message}</div>
     </g:if>
 
-<% def total = 0 %> <!-- may not need as there is no looping (yet) through cart items -->
+<% def total = 0 %> <%-- may not need as there is no looping (yet) through cart items --%>
     <table style="width:100%;" border="0">
       <form action="view" method="post">
         <g:each var="line" in="${pay?.lines}">
