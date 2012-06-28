@@ -18,6 +18,11 @@ grails {
     }
 }
 
+checkTranUploadJobCron="0 3 0 * * ?" // 0:03AM MON-FRI probably should be "0 3 0 * 1-5 ?"
+importJobCron="0 1 7,19 * * ?" // 7:01 AM and 7:01 PM  
+//checkTranUploadJobCron="0 0 1 1 * ?" // jan 1
+//importJobCron="0 0 1 1 * ?" // jan 1
+
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
@@ -46,7 +51,7 @@ spotsy400.user="epayment"
 spotsy400.pass="epayadmin"
 spotsy400.jdbc.driver="com.ibm.as400.access.AS400JDBCDriver"
 
-echeck.append.email.to.addresses=["KCatlett@spotsylvania.va.us","LBenn@spotsylvania.va.us","TJett@spotsylvania.va.us","RAshley@spotsylvania.va.us", "dondenoncourt@gmail.com"]
+echeck.append.email.to.addresses=["KCatlett@spotsylvania.va.us","LBenn@spotsylvania.va.us","TJett@spotsylvania.va.us","RAshley@spotsylvania.va.us", "webmaster@spotsy"]
 echeck.append.email.copy.address="webmaster@spotsylvania.va.us"
 echeck.append.email.from.address="treas@spotsylvania.va.us"
 

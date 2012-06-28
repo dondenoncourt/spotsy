@@ -24,9 +24,9 @@
   <g:if test="${flash.message}">
     <td colspan="2" style="width:100%;text-align:left;"><div class="errors">${flash.message}</div></td>
   </g:if>
-  <g:if test="${cmd?.hasErrors()}">
-    <td colspan="2" style="width:100%;text-align:left;"><div class="errors"><g:renderErrors bean="${cmd}" /></div></td>
-  </g:if>
+  <%--<g:if test="${cmd?.hasErrors()}">--%>
+    <%--<td colspan="2" style="width:100%;text-align:left;"><div class="errors"><g:renderErrors bean="${cmd}" /></div></td>--%>
+  <%--</g:if>--%>
   <tr>
     <td style="width:40%;text-align:right;" valign="top"><label class="label" for="firstName"><b style="color:#FF0000">*</b><b>First Name:</b></label></td>
     <td style="width:60%;text-align:left;"><input type="text" name="firstName" id="firstName" class="text" size="30" maxlength="50" value="${cmd.firstName}"/></td>

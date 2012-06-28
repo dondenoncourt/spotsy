@@ -7,7 +7,7 @@ import groovy.sql.Sql
  */
 class PaymentController {
 
-	static def stateList = ['AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont', 'VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming']
+    static def stateList = ['AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'District of Columbia','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont', 'VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming']
     static def actTypList = ['1':'Checking Account', '2':'Savings Account']
     def beforeInterceptor = {
         log.debug("action: $actionName params: $params")
@@ -17,13 +17,13 @@ class PaymentController {
                 session.userNum = userNum.toLong()
             }
         }
-		if (!session.userNum) { // still not there, see if MySpotsy added the cookie
-			String userNum = g.cookie(name:'MYSPOTSYUSERNUM')
-			if (userNum) {
-				session.userNum = userNum.toLong()
-			}
-		}
-				
+        if (!session.userNum) { // still not there, see if MySpotsy added the cookie
+            String userNum = g.cookie(name:'MYSPOTSYUSERNUM')
+            if (userNum) {
+                session.userNum = userNum.toLong()
+            }
+        }
+                
     }
     def afterInterceptor = {model ->
         log.debug("action: $actionName model: $model")
@@ -46,18 +46,18 @@ class PaymentController {
         session.userNum = userNum.toLong()
     }
 
-	/** Display the list of all payment types (with a graphic in the bill_type table */
+    /** Display the list of all payment types (with a graphic in the bill_type table */
     def payments = {
         def billTypes = BillType.list()
         render view:'payments', model:[billTypes:billTypes]
     }
 
-	/** display the edit page with attributes specific to the selected bill type */
+    /** display the edit page with attributes specific to the selected bill type */
     def itemdetails = {
         BillType billType = BillType.get(params.billTypeId)
         def balances = []
         if (session.userNum) {
-        	balances = getBalances(billType.id)
+            balances = getBalances(billType.id)
         }
         render (view:'edit', model:[billType:billType, balances:balances, doNotValidateAccount:params.doNotValidateAccount?true:false])
     }
@@ -88,7 +88,7 @@ class PaymentController {
         }
         def balances = []
         if (session.userNum) {
-		balances = getBalances(billType.id)
+        balances = getBalances(billType.id)
         }
         BigDecimal amount = (bal.credit && bal?.credit == 'CR')? 0 : (bal.balance > 0? bal.balance:bal.balance.multiply(-1))
         session.bal = bal
@@ -98,100 +98,100 @@ class PaymentController {
     private List getBalances(def billTypeId) {
         def balCtl = BalanceImportControl.findByComplete(1, [sort:'finishDate',order:'desc'])
         def balances = []
-	UserAccount.findAllByUserNum(session.userNum).each {userAccount ->
-		switch (billTypeId) {
-		case  1: // real estate
-			Balance.findAllWhere(reCustomerNum:userAccount.reCustomerNum, systemId:'01', 
-		    balanceImportNum:balCtl.balanceImportNum).each {re -> balances << re }
-		    break
-		case  2: // personal property
-			Balance.findAllWhere(ppAccount:userAccount.ppAccountNum, systemId:'02', 
-		    balanceImportNum:balCtl.balanceImportNum).each {pp -> balances << pp }
-		    break
-		case  4: // water/sewer
-			Balance.findAllWhere(wsCustomerNum:userAccount.wsCustomerNum, wsLocationNum:userAccount.wsLocationNum, 
-						systemId:'04', balanceImportNum:balCtl.balanceImportNum).each {ws-> balances << ws }
-		    break
-		}
-	}
-	return balances
+    UserAccount.findAllByUserNum(session.userNum).each {userAccount ->
+        switch (billTypeId) {
+        case  1: // real estate
+            Balance.findAllWhere(reCustomerNum:userAccount.reCustomerNum, systemId:'01', 
+            balanceImportNum:balCtl.balanceImportNum).each {re -> balances << re }
+            break
+        case  2: // personal property
+            Balance.findAllWhere(ppAccount:userAccount.ppAccountNum, systemId:'02', 
+            balanceImportNum:balCtl.balanceImportNum).each {pp -> balances << pp }
+            break
+        case  4: // water/sewer
+            Balance.findAllWhere(wsCustomerNum:userAccount.wsCustomerNum, wsLocationNum:userAccount.wsLocationNum, 
+                        systemId:'04', balanceImportNum:balCtl.balanceImportNum).each {ws-> balances << ws }
+            break
+        }
     }
-	/** Takes the user entered account and payment and checks for duplication payment, 
-	 *  If there is an existing payment, show an error and return to the edittocart page.
-	 *  Otherwise, create Payment and associated PaymentLine(s) objects in the user's 
-	 *  session to hold their payment in transient memory until the confirmation page.
-	 *  Then display the viewcart page.
-	 */
+    return balances
+    }
+    /** Takes the user entered account and payment and checks for duplication payment, 
+     *  If there is an existing payment, show an error and return to the edittocart page.
+     *  Otherwise, create Payment and associated PaymentLine(s) objects in the user's 
+     *  session to hold their payment in transient memory until the confirmation page.
+     *  Then display the viewcart page.
+     */
     def edittocart = {EditToCartCommand cmd ->
-    	flash.message = null
+        flash.message = null
         if (cmd.hasErrors()) {
             render (view:'edit', model:[cmd:cmd, billType: BillType.get(cmd.billTypeId)])
             return
         }
-		Sql sql = new Sql(sessionFactory.getCurrentSession().connection())
+        Sql sql = new Sql(sessionFactory.getCurrentSession().connection())
 
-		boolean dup = false
-    	String select = """select p.confirmation_num, pl.account 
-    	                     from payment p 
-    	                     inner join payment_line pl 
-    	                             on p.id = payment_id 
-    	                     inner join check_transaction ct 
-    	                             on ct.confirmation_num = p.confirmation_num 
-    	                     where  pl.account = ${cmd.accountNum} 
+        boolean dup = false
+        String select = """select p.confirmation_num, pl.account 
+                             from payment p 
+                             inner join payment_line pl 
+                                     on p.id = payment_id 
+                             inner join check_transaction ct 
+                                     on ct.confirmation_num = p.confirmation_num 
+                             where  pl.account = ${cmd.accountNum} 
                                and  pl.bill_num = ${cmd.billNum}
                                and  ct.date_sent_to400 is NULL
-                               and  pl.bill_Type_Id = ${cmd.billTypeId}; """	
+                               and  pl.bill_Type_Id = ${cmd.billTypeId}; """    
         log.debug "checking for duplicate payment with: $select"                               
         sql.eachRow (select) {dup = it as boolean}
                           
         if (!dup && session.payment) {
-        	session.payment.lines.each {line ->
+            session.payment.lines.each {line ->
                 int billNum = cmd.billNum?cmd.billNum.toInteger():0
                 if (line.account ==  cmd.accountNum && line.billNum == billNum) {
-                	dup = true
+                    dup = true
                 }
             }
         }
-		
-    	if (dup) {
-			flash.message = "This bill has already been selected for payment."
-   			flash.alreadySubmitted = true
-			render (view:'edit', model:[cmd:cmd, billType: BillType.get(cmd.billTypeId)])
-	        return
-    	}
-    	if (!cmd.balId) {
+        
+        if (dup) {
+            flash.message = "This bill has already been selected for payment."
+               flash.alreadySubmitted = true
+            render (view:'edit', model:[cmd:cmd, billType: BillType.get(cmd.billTypeId)])
+            return
+        }
+        if (!cmd.balId) {
             def balCtl = BalanceImportControl.findByComplete(1, [sort:'finishDate',order:'desc'])
             def bal
             switch (cmd.billTypeId) {
-            	case  1: // real estate
-			    	bal = Balance.findWhere(systemId:'01', balanceImportNum:balCtl.balanceImportNum, 
+                case  1: // real estate
+                    bal = Balance.findWhere(systemId:'01', balanceImportNum:balCtl.balanceImportNum, 
                                                         reCustomerNum:cmd.accountNum?cmd.accountNum.toInteger():0, 
                                                         reBillNum:cmd.billNum?cmd.billNum.toInteger():0)
-	                break
-	            case  2: // personal property
-	            	bal = Balance.findWhere(systemId:'02', balanceImportNum:balCtl.balanceImportNum, 
+                    break
+                case  2: // personal property
+                    bal = Balance.findWhere(systemId:'02', balanceImportNum:balCtl.balanceImportNum, 
                                                 ppAccount:cmd.accountNum?cmd.accountNum.toInteger():0)
-	                break
-	            case  4: // water/sewer
-	            	bal = Balance.findWhere(systemId:'04', balanceImportNum:balCtl.balanceImportNum,  
+                    break
+                case  4: // water/sewer
+                    bal = Balance.findWhere(systemId:'04', balanceImportNum:balCtl.balanceImportNum,  
                                                 wsCustomerNum:cmd.accountNum?cmd.accountNum.toInteger():0,
                                                 wsLocationNum:cmd.billNum?cmd.billNum.toInteger():0)
-	                break
+                    break
             }
             if ([1,2,4].find {it == cmd.billTypeId} ) {
-            	if (!bal && !params.doNotValidateAccount) {
-        			flash.message = "Invalid account number: ${cmd.accountNum} ${cmd.billNum}"
-    				render (view:'edit', model:[cmd:cmd, billType: BillType.get(cmd.billTypeId)])
-    		        return
-            	}
-				if (bal) {
-					cmd.balId = bal.balanceNum
-				}
+                if (!bal && !params.doNotValidateAccount) {
+                    flash.message = "Invalid account number: ${cmd.accountNum} ${cmd.billNum}"
+                    render (view:'edit', model:[cmd:cmd, billType: BillType.get(cmd.billTypeId)])
+                    return
+                }
+                if (bal) {
+                    cmd.balId = bal.balanceNum
+                }
             }
-    	}
+        }
         Payment pay = session.payment
         if (!pay) {
-            pay = new Payment(userNum:session.userNum)  
+            pay = new Payment(userNum:session.userNum?:0)  
             session.payment = pay
         }
         PaymentLine line = new PaymentLine(billTypeId:cmd.billTypeId,amount:cmd.amount, account:cmd.accountNum, billNum:cmd.billNum, balanceNum:cmd.balId)
@@ -203,36 +203,36 @@ class PaymentController {
             return
         }
         log.debug pay
-		redirect action:'viewcart',params:[id:session?.payment?.id]
+        redirect action:'viewcart',params:[id:session?.payment?.id]
     }
     /** Display all Payment and associated Payment(s) transient ('cart') information with the view page */
     def viewcart = {
-    	if (params.id) {
+        if (params.id) {
 /*TODO sometimes gives: 
         "Provided id of the wrong type for class Payment. Expected: class java.lang.Long, got class java.lang.String"
         so  Payment.get(params.id.toLong())?
 
 */
-    		session.payment = Payment.get(params.id)
-    	}
+            session.payment = Payment.get(params.id)
+        }
         render (view:'view', model:[pay:session.payment])// , bal:session.bal] ) get with paymentLine's transient balanceNum
     }
     /** remove a line item as selected from a link in the viewcart page */
     def removeitem = {
         PaymentLine line = PaymentLine.get(params.id)
         if (line) {
-			def checkTran = CheckTransaction.findByPaymentLineId(params.id)
-			if (checkTran) {
-				flash.message = "Payment $line already submitted with confirmation no: $checkTran.confirmationNum, remove not allowed."
-			} else {
-	        	log.debug("deleting PaymentLine: "+line)
-	        	line.delete()
-	        	session.payment = Payment.get(line.payment.id)
-	            session.payment?.removeFromLines(line)
-	      		session.payment?.lines?.remove(line)
-			}
+            def checkTran = CheckTransaction.findByPaymentLineId(params.id)
+            if (checkTran) {
+                flash.message = "Payment $line already submitted with confirmation no: $checkTran.confirmationNum, remove not allowed."
+            } else {
+                log.debug("deleting PaymentLine: "+line)
+                line.delete()
+                session.payment = Payment.get(line.payment.id)
+                session.payment?.removeFromLines(line)
+                  session.payment?.lines?.remove(line)
+            }
         }
-		redirect action:'viewcart',params:[id:session?.payment?.id]
+        redirect action:'viewcart',params:[id:session?.payment?.id]
     }
 
     /** Begin the checkout process by retrieving the user info from the users table 
@@ -285,19 +285,19 @@ class PaymentController {
      */
     def submitpayment = {UserInfoCommand cmd ->
 
-    	def alreadySubmitted = false
-		withForm {
-		}.invalidToken {
-    		if (!params.unittesting) {
-    			alreadySubmitted = true
-    		}
-		}
-		if (alreadySubmitted) {
-			render view:'/index'
-			return
-		}
-		
-    	Payment pay = session.payment
+        def alreadySubmitted = false
+        withForm {
+        }.invalidToken {
+            if (!params.unittesting) {
+                alreadySubmitted = true
+            }
+        }
+        if (alreadySubmitted) {
+            render view:'/index'
+            return
+        }
+        
+        Payment pay = session.payment
         if (!pay || !pay.lines.size()) {
             flash.message = "There are no payments to submit"
             render (view:'preview', model:[cmd:cmd])
@@ -345,14 +345,14 @@ class EditToCartCommand {
 
     static constraints = {
        billTypeId(min:1, validator: {val, obj ->
-	       return (BillType.get(val) != null)
+           return (BillType.get(val) != null)
        })
         /* validation from the previously used ItemParameters "data types" table */
        accountNum (blank:false, validator: {val, obj ->
             def bt = BillType.get(obj.billTypeId)
             if (bt) {
-	            obj.accountNum = obj.accountNum?.replaceAll(/\D/, {''})
-	            return obj.accountNum?.size() >= bt.minActDigits && obj.accountNum?.size() <= bt.maxActDigits
+                obj.accountNum = obj.accountNum?.replaceAll(/\D/, {''})
+                return obj.accountNum?.size() >= bt.minActDigits && obj.accountNum?.size() <= bt.maxActDigits
             }
        })
        billNum(validator: {val, obj ->
@@ -402,7 +402,7 @@ class UserInfoCommand {
        country blank:false  //TODO convert ISO 3-digit countries to integer?
        zip blank:false, matches:/^\d{5}(-?\d{4})?$/
        routingNum (blank:false, matches:/^\d{9}$/, validator: {val, obj ->
-       	  val = val?.replaceAll(/\D/, {''})
+             val = val?.replaceAll(/\D/, {''})
           if (val?.size() < 9) return false
           def n = 0;
           for (def i = 0; i < val.size(); i += 3) {

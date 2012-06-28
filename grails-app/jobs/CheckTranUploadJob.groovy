@@ -1,10 +1,12 @@
 import java.sql.Timestamp
+import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
 
 /** Auto-timed tasks which uses a cron (based the Unix cron facilities) setting  
  * which is currently set to "0 59 23 * * ?"  or 11:59PM MON-FRI */
 class CheckTranUploadJob {
     //def cronExpression = "0 * * * * ?" // every minute for testing
-    def cronExpression = "0 3 0 * * ?" // 0:03AM MON-FRI probably should be "0 3 0 * 1-5 ?"
+    //def cronExpression = "0 3 0 * * ?" // 0:03AM MON-FRI probably should be "0 3 0 * 1-5 ?"
+    def cronExpression = CH.config.checkTranUploadJobCron
     def echecksService
     def grailsApplication
     def mailService
